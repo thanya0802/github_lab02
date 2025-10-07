@@ -1,4 +1,4 @@
-# LAB1 - MLOps (IE-7374) 
+# LAB02-Github
 
 This lab focuses on 5 modules, which includes creating a virtual environment, creating a GitHub repository, creating Python files, creating test files using pytest and unittest, and implementing GitHub Actions.
 
@@ -25,9 +25,6 @@ After activation, you will see the virtual environment's name in your command pr
 
 ## Step 2: Creating a GitHub Repository, Cloning and Folder Structure
 Now that we have set up our virtual environment, the next step is to create a GitHub repository for our project and establish a structured folder layout. This organization helps maintain your project's code, data, and tests in an organized manner.
-
-### Fork the Repository: 
-Click the "Fork" button at the top right of this [repository](https://github.com/raminmohammadi/MLOps/) to create your own copy.
 
 ### Creating a GitHub Repository
 - Open a web browser and go to GitHub.
@@ -78,17 +75,13 @@ Now that we have our virtual environment set up, the GitHub repository created, 
     ```
     git push origin main
     ```
-## Step 3: Creating calculator.py in src Folder
-- In this step, we create a Python script named calculator.py within the src folder of your project. This script contains a set of mathematical functions designed to perform basic arithmetic operations.
-- fun1(x, y) adds two input numbers, x and y.
-- fun2(x, y) subtracts y from x.
-- fun3(x, y) multiplies x and y.
-- fun4(x, y) combines the results of the above functions and returns their sum.
-- To view the code and gain a deeper understanding, please refer to the calculator.py file located under the src folder in this [link](https://github.com/raminmohammadi/MLOps/blob/main/src/lab1/calculator.py).
+## Step 3: Creating string_processor.py in src Folder
+- In this step, we create a Python script named string_processor.py within the src folder of your project. This script implements basic string operations such as:
+- to_uppercase(text) converts input string to uppercase.
+- to_lowercase(text) converts input string to lowercase.
+- count_vowels(text) counts vowels (a,e,i,o,u) in the string.
+- reverse_string(text) returns the reversed string.
 
-> **Note:** <br>
-Whenever you want to push files to your repository follow this step
-[Adding and Pushing Your Project Code to GitHub](#adding-and-pushing-your-project-code-to-github)
 
 ## Step 4: Creating tests using Pytest and Unittests
 - In this step, we'll set up unit tests for the functions in our calculator.py script using two popular testing frameworks: [pytest](https://docs.pytest.org/en/7.4.x/) and [unittest](https://docs.python.org/3/library/unittest.html). Unit testing ensures that individual components of your code work as expected, helping you catch and fix bugs early in the development process.
@@ -176,3 +169,120 @@ Please refer [this](https://github.com/raminmohammadi/MLOps/blob/main/Github_Lab
 - Run unittests: In this step, the unittest tests are executed using the command python -m unittest test.test_unittest. It runs the unittest test suite defined in the test.test_unittest module.
 - Notify on success: This step uses conditional logic with if: success() to check if all the unittest tests passed successfully. If they did, it runs the message "Unit tests passed successfully."
 - Notify on failure: Similarly, this step uses conditional logic with if: failure() to check if any of the unittest tests failed. If any test failed, it runs the message "Unit tests failed."
+
+
+# LAB2 – MLOps (IE-7374)
+
+This lab focuses on five core MLOps concepts: creating a virtual environment, managing GitHub repositories, writing modular Python code, testing with Pytest and Unittest, and automating testing using GitHub Actions.
+
+---
+
+## Step 1 — Creating a Virtual Environment
+
+In software development, virtual environments isolate dependencies for each project, ensuring consistency and preventing conflicts between global and project-specific packages.
+
+**To create and activate a virtual environment:**
+
+- Use the command to create:  
+  `python -m venv lab_01`
+- Activate it:  
+  - **macOS/Linux:** `source lab_01/bin/activate`  
+  - **Windows:** `lab_01\Scripts\activate`
+
+Once activated, the environment name will appear in your terminal, confirming that you are working inside an isolated environment.
+
+---
+
+## Step 2 — Creating a GitHub Repository and Project Structure
+
+A well-organized structure ensures that code, data, and tests remain clean and maintainable throughout the project.
+
+**Folder structure:**
+- `data`: stores datasets or reference files  
+- `src`: contains the source code  
+- `test`: includes all unit testing scripts  
+- `.github/workflows`: holds the automation workflows for testing  
+- `requirements.txt`: lists required dependencies  
+- `.gitignore`: defines files and folders to be excluded from version control  
+- `README.md`: serves as documentation for the project  
+
+**To add and push code to GitHub:**
+1. Stage all files using `git add .`
+2. Commit changes using `git commit -m "Initial commit"`
+3. Push updates using `git push origin main`
+
+---
+
+## Step 3 — Creating `string_processor.py` in the src Folder
+
+The string processor module includes fundamental string manipulation functions such as:
+- Converting strings to uppercase  
+- Converting strings to lowercase  
+- Counting vowels  
+- Reversing strings  
+
+This module demonstrates Python’s basic operations and forms the foundation for testing and automation in later steps.
+
+---
+
+## Step 4 — Creating Tests Using Pytest and Unittest
+
+Testing ensures that each function behaves as expected, improving software quality and reliability.
+
+### **Pytest**
+- Pytest allows writing lightweight test functions that automatically discover and validate results.  
+- It supports assertions and parametrized testing, enabling multiple test cases with different inputs.
+
+### **Unittest**
+- Unittest organizes tests using a class-based structure derived from Python’s standard library.  
+- Each test method checks specific functionality using assertion methods like `assertEqual`, `assertTrue`, or `assertFalse`.  
+- Running the tests verifies the correctness of the implemented string functions.
+
+---
+
+## Step 5 — Implementing GitHub Actions
+
+GitHub Actions automates testing and validation every time code is pushed to the repository.  
+This ensures that the main branch remains stable and that new changes don’t break existing functionality.
+
+### **How GitHub Actions Work**
+- **Events:** Actions are triggered when specific activities occur, such as pushing new code or creating a pull request.  
+- **Jobs:** Each workflow runs in an isolated environment (like Ubuntu) to perform tasks.  
+- **Steps:** These define specific actions such as checking out the code, setting up Python, installing dependencies, and running tests.
+
+### **Purpose**
+- **Automation:** Removes the need for manual test execution.  
+- **Continuous Integration:** Automatically validates new commits.  
+- **Continuous Deployment:** Ensures code is ready for deployment once all tests pass.
+
+---
+
+## Step 6 — Pytest and Unittest Workflows
+
+Two workflows are configured under the `.github/workflows` directory.
+
+### **Pytest Workflow**
+- Runs whenever new code is pushed to the main branch.  
+- Checks out code, sets up Python 3.8, installs dependencies, runs Pytest, and uploads test reports.  
+- Displays messages indicating whether all tests passed or failed.
+
+### **Unittest Workflow**
+- Also triggered by pushes to the main branch.  
+- Runs Unittest cases defined in the `test_unittest.py` file.  
+- Displays notifications for successful or failed test execution.
+
+Both workflows ensure automated quality checks through continuous integration.
+
+---
+
+## Step 7 — Verifying CI/CD Automation
+
+After pushing changes to GitHub:
+
+1. Open the **Actions** tab in your repository.  
+2. Observe the two workflows:  
+   - **Testing with Pytest**  
+   - **Python Unittests**  
+3. A green checkmark indicates successful runs, confirming that the automation is functioning correctly.
+
+
